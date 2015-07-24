@@ -1,0 +1,393 @@
+     1                                  %include 'syscalls32.inc'
+     2                              <1> %define sys_restart_syscall 0
+     3                              <1> %define sys_exit 1
+     4                              <1> %define sys_fork 2
+     5                              <1> %define sys_read 3
+     6                              <1> %define sys_write 4
+     7                              <1> %define sys_open 5
+     8                              <1> %define sys_close 6
+     9                              <1> %define sys_waitpid 7
+    10                              <1> %define sys_creat 8
+    11                              <1> %define sys_link 9
+    12                              <1> %define sys_unlink 10
+    13                              <1> %define sys_execve 11
+    14                              <1> %define sys_chdir 12
+    15                              <1> %define sys_time 13
+    16                              <1> %define sys_mknod 14
+    17                              <1> %define sys_chmod 15
+    18                              <1> %define sys_lchown 16
+    19                              <1> %define sys_break 17
+    20                              <1> %define sys_oldstat 18
+    21                              <1> %define sys_lseek 19
+    22                              <1> %define sys_getpid 20
+    23                              <1> %define sys_mount 21
+    24                              <1> %define sys_umount 22
+    25                              <1> %define sys_setuid 23
+    26                              <1> %define sys_getuid 24
+    27                              <1> %define sys_stime 25
+    28                              <1> %define sys_ptrace 26
+    29                              <1> %define sys_alarm 27
+    30                              <1> %define sys_oldfstat 28
+    31                              <1> %define sys_pause 29
+    32                              <1> %define sys_utime 30
+    33                              <1> %define sys_stty 31
+    34                              <1> %define sys_gtty 32
+    35                              <1> %define sys_access 33
+    36                              <1> %define sys_nice 34
+    37                              <1> %define sys_ftime 35
+    38                              <1> %define sys_sync 36
+    39                              <1> %define sys_kill 37
+    40                              <1> %define sys_rename 38
+    41                              <1> %define sys_mkdir 39
+    42                              <1> %define sys_rmdir 40
+    43                              <1> %define sys_dup 41
+    44                              <1> %define sys_pipe 42
+    45                              <1> %define sys_times 43
+    46                              <1> %define sys_prof 44
+    47                              <1> %define sys_brk 45
+    48                              <1> %define sys_setgid 46
+    49                              <1> %define sys_getgid 47
+    50                              <1> %define sys_signal 48
+    51                              <1> %define sys_geteuid 49
+    52                              <1> %define sys_getegid 50
+    53                              <1> %define sys_acct 51
+    54                              <1> %define sys_umount2 52
+    55                              <1> %define sys_lock 53
+    56                              <1> %define sys_ioctl 54
+    57                              <1> %define sys_fcntl 55
+    58                              <1> %define sys_mpx 56
+    59                              <1> %define sys_setpgid 57
+    60                              <1> %define sys_ulimit 58
+    61                              <1> %define sys_oldolduname 59
+    62                              <1> %define sys_umask 60
+    63                              <1> %define sys_chroot 61
+    64                              <1> %define sys_ustat 62
+    65                              <1> %define sys_dup2 63
+    66                              <1> %define sys_getppid 64
+    67                              <1> %define sys_getpgrp 65
+    68                              <1> %define sys_setsid 66
+    69                              <1> %define sys_sigaction 67
+    70                              <1> %define sys_sgetmask 68
+    71                              <1> %define sys_ssetmask 69
+    72                              <1> %define sys_setreuid 70
+    73                              <1> %define sys_setregid 71
+    74                              <1> %define sys_sigsuspend 72
+    75                              <1> %define sys_sigpending 73
+    76                              <1> %define sys_sethostname 74
+    77                              <1> %define sys_setrlimit 75
+    78                              <1> %define sys_getrlimit 76
+    79                              <1> %define sys_getrusage 77
+    80                              <1> %define sys_gettimeofday 78
+    81                              <1> %define sys_settimeofday 79
+    82                              <1> %define sys_getgroups 80
+    83                              <1> %define sys_setgroups 81
+    84                              <1> %define sys_select 82
+    85                              <1> %define sys_symlink 83
+    86                              <1> %define sys_oldlstat 84
+    87                              <1> %define sys_readlink 85
+    88                              <1> %define sys_uselib 86
+    89                              <1> %define sys_swapon 87
+    90                              <1> %define sys_reboot 88
+    91                              <1> %define sys_readdir 89
+    92                              <1> %define sys_mmap 90
+    93                              <1> %define sys_munmap 91
+    94                              <1> %define sys_truncate 92
+    95                              <1> %define sys_ftruncate 93
+    96                              <1> %define sys_fchmod 94
+    97                              <1> %define sys_fchown 95
+    98                              <1> %define sys_getpriority 96
+    99                              <1> %define sys_setpriority 97
+   100                              <1> %define sys_profil 98
+   101                              <1> %define sys_statfs 99
+   102                              <1> %define sys_fstatfs 100
+   103                              <1> %define sys_ioperm 101
+   104                              <1> %define sys_socketcall 102
+   105                              <1> %define sys_syslog 103
+   106                              <1> %define sys_setitimer 104
+   107                              <1> %define sys_getitimer 105
+   108                              <1> %define sys_stat 106
+   109                              <1> %define sys_lstat 107
+   110                              <1> %define sys_fstat 108
+   111                              <1> %define sys_olduname 109
+   112                              <1> %define sys_iopl 110
+   113                              <1> %define sys_vhangup 111
+   114                              <1> %define sys_idle 112
+   115                              <1> %define sys_vm86old 113
+   116                              <1> %define sys_wait4 114
+   117                              <1> %define sys_swapoff 115
+   118                              <1> %define sys_sysinfo 116
+   119                              <1> %define sys_ipc 117
+   120                              <1> %define sys_fsync 118
+   121                              <1> %define sys_sigreturn 119
+   122                              <1> %define sys_clone 120
+   123                              <1> %define sys_setdomainname 121
+   124                              <1> %define sys_uname 122
+   125                              <1> %define sys_modify_ldt 123
+   126                              <1> %define sys_adjtimex 124
+   127                              <1> %define sys_mprotect 125
+   128                              <1> %define sys_sigprocmask 126
+   129                              <1> %define sys_create_module 127
+   130                              <1> %define sys_init_module 128
+   131                              <1> %define sys_delete_module 129
+   132                              <1> %define sys_get_kernel_syms 130
+   133                              <1> %define sys_quotactl 131
+   134                              <1> %define sys_getpgid 132
+   135                              <1> %define sys_fchdir 133
+   136                              <1> %define sys_bdflush 134
+   137                              <1> %define sys_sysfs 135
+   138                              <1> %define sys_personality 136
+   139                              <1> %define sys_afs_syscall 137
+   140                              <1> %define sys_setfsuid 138
+   141                              <1> %define sys_setfsgid 139
+   142                              <1> %define sys__llseek 140
+   143                              <1> %define sys_getdents 141
+   144                              <1> %define sys__newselect 142
+   145                              <1> %define sys_flock 143
+   146                              <1> %define sys_msync 144
+   147                              <1> %define sys_readv 145
+   148                              <1> %define sys_writev 146
+   149                              <1> %define sys_getsid 147
+   150                              <1> %define sys_fdatasync 148
+   151                              <1> %define sys__sysctl 149
+   152                              <1> %define sys_mlock 150
+   153                              <1> %define sys_munlock 151
+   154                              <1> %define sys_mlockall 152
+   155                              <1> %define sys_munlockall 153
+   156                              <1> %define sys_sched_setparam 154
+   157                              <1> %define sys_sched_getparam 155
+   158                              <1> %define sys_sched_setscheduler 156
+   159                              <1> %define sys_sched_getscheduler 157
+   160                              <1> %define sys_sched_yield 158
+   161                              <1> %define sys_sched_get_priority_max 159
+   162                              <1> %define sys_sched_get_priority_min 160
+   163                              <1> %define sys_sched_rr_get_interval 161
+   164                              <1> %define sys_nanosleep 162
+   165                              <1> %define sys_mremap 163
+   166                              <1> %define sys_setresuid 164
+   167                              <1> %define sys_getresuid 165
+   168                              <1> %define sys_vm86 166
+   169                              <1> %define sys_query_module 167
+   170                              <1> %define sys_poll 168
+   171                              <1> %define sys_nfsservctl 169
+   172                              <1> %define sys_setresgid 170
+   173                              <1> %define sys_getresgid 171
+   174                              <1> %define sys_prctl 172
+   175                              <1> %define sys_rt_sigreturn 173
+   176                              <1> %define sys_rt_sigaction 174
+   177                              <1> %define sys_rt_sigprocmask 175
+   178                              <1> %define sys_rt_sigpending 176
+   179                              <1> %define sys_rt_sigtimedwait 177
+   180                              <1> %define sys_rt_sigqueueinfo 178
+   181                              <1> %define sys_rt_sigsuspend 179
+   182                              <1> %define sys_pread64 180
+   183                              <1> %define sys_pwrite64 181
+   184                              <1> %define sys_chown 182
+   185                              <1> %define sys_getcwd 183
+   186                              <1> %define sys_capget 184
+   187                              <1> %define sys_capset 185
+   188                              <1> %define sys_sigaltstack 186
+   189                              <1> %define sys_sendfile 187
+   190                              <1> %define sys_getpmsg 188
+   191                              <1> %define sys_putpmsg 189
+   192                              <1> %define sys_vfork 190
+   193                              <1> %define sys_ugetrlimit 191
+   194                              <1> %define sys_mmap2 192
+   195                              <1> %define sys_truncate64 193
+   196                              <1> %define sys_ftruncate64 194
+   197                              <1> %define sys_stat64 195
+   198                              <1> %define sys_lstat64 196
+   199                              <1> %define sys_fstat64 197
+   200                              <1> %define sys_lchown32 198
+   201                              <1> %define sys_getuid32 199
+   202                              <1> %define sys_getgid32 200
+   203                              <1> %define sys_geteuid32 201
+   204                              <1> %define sys_getegid32 202
+   205                              <1> %define sys_setreuid32 203
+   206                              <1> %define sys_setregid32 204
+   207                              <1> %define sys_getgroups32 205
+   208                              <1> %define sys_setgroups32 206
+   209                              <1> %define sys_fchown32 207
+   210                              <1> %define sys_setresuid32 208
+   211                              <1> %define sys_getresuid32 209
+   212                              <1> %define sys_setresgid32 210
+   213                              <1> %define sys_getresgid32 211
+   214                              <1> %define sys_chown32 212
+   215                              <1> %define sys_setuid32 213
+   216                              <1> %define sys_setgid32 214
+   217                              <1> %define sys_setfsuid32 215
+   218                              <1> %define sys_setfsgid32 216
+   219                              <1> %define sys_pivot_root 217
+   220                              <1> %define sys_mincore 218
+   221                              <1> %define sys_madvise 219
+   222                              <1> %define sys_getdents64 220
+   223                              <1> %define sys_fcntl64 221
+   224                              <1> %define sys_gettid 224
+   225                              <1> %define sys_readahead 225
+   226                              <1> %define sys_setxattr 226
+   227                              <1> %define sys_lsetxattr 227
+   228                              <1> %define sys_fsetxattr 228
+   229                              <1> %define sys_getxattr 229
+   230                              <1> %define sys_lgetxattr 230
+   231                              <1> %define sys_fgetxattr 231
+   232                              <1> %define sys_listxattr 232
+   233                              <1> %define sys_llistxattr 233
+   234                              <1> %define sys_flistxattr 234
+   235                              <1> %define sys_removexattr 235
+   236                              <1> %define sys_lremovexattr 236
+   237                              <1> %define sys_fremovexattr 237
+   238                              <1> %define sys_tkill 238
+   239                              <1> %define sys_sendfile64 239
+   240                              <1> %define sys_futex 240
+   241                              <1> %define sys_sched_setaffinity 241
+   242                              <1> %define sys_sched_getaffinity 242
+   243                              <1> %define sys_set_thread_area 243
+   244                              <1> %define sys_get_thread_area 244
+   245                              <1> %define sys_io_setup 245
+   246                              <1> %define sys_io_destroy 246
+   247                              <1> %define sys_io_getevents 247
+   248                              <1> %define sys_io_submit 248
+   249                              <1> %define sys_io_cancel 249
+   250                              <1> %define sys_fadvise64 250
+   251                              <1> %define sys_exit_group 252
+   252                              <1> %define sys_lookup_dcookie 253
+   253                              <1> %define sys_epoll_create 254
+   254                              <1> %define sys_epoll_ctl 255
+   255                              <1> %define sys_epoll_wait 256
+   256                              <1> %define sys_remap_file_pages 257
+   257                              <1> %define sys_set_tid_address 258
+   258                              <1> %define sys_timer_create 259
+   259                              <1> %define sys_timer_settime 260
+   260                              <1> %define sys_timer_gettime 261
+   261                              <1> %define sys_timer_getoverrun 262
+   262                              <1> %define sys_timer_delete 263
+   263                              <1> %define sys_clock_settime 264
+   264                              <1> %define sys_clock_gettime 265
+   265                              <1> %define sys_clock_getres 266
+   266                              <1> %define sys_clock_nanosleep 267
+   267                              <1> %define sys_statfs64 268
+   268                              <1> %define sys_fstatfs64 269
+   269                              <1> %define sys_tgkill 270
+   270                              <1> %define sys_utimes 271
+   271                              <1> %define sys_fadvise64_64 272
+   272                              <1> %define sys_vserver 273
+   273                              <1> %define sys_mbind 274
+   274                              <1> %define sys_get_mempolicy 275
+   275                              <1> %define sys_set_mempolicy 276
+   276                              <1> %define sys_mq_open 277
+   277                              <1> %define sys_mq_unlink 278
+   278                              <1> %define sys_mq_timedsend 279
+   279                              <1> %define sys_mq_timedreceive 280
+   280                              <1> %define sys_mq_notify 281
+   281                              <1> %define sys_mq_getsetattr 282
+   282                              <1> %define sys_kexec_load 283
+   283                              <1> %define sys_waitid 284
+   284                              <1> %define sys_add_key 286
+   285                              <1> %define sys_request_key 287
+   286                              <1> %define sys_keyctl 288
+   287                              <1> %define sys_ioprio_set 289
+   288                              <1> %define sys_ioprio_get 290
+   289                              <1> %define sys_inotify_init 291
+   290                              <1> %define sys_inotify_add_watch 292
+   291                              <1> %define sys_inotify_rm_watch 293
+   292                              <1> %define sys_migrate_pages 294
+   293                              <1> %define sys_openat 295
+   294                              <1> %define sys_mkdirat 296
+   295                              <1> %define sys_mknodat 297
+   296                              <1> %define sys_fchownat 298
+   297                              <1> %define sys_futimesat 299
+   298                              <1> %define sys_fstatat64 300
+   299                              <1> %define sys_unlinkat 301
+   300                              <1> %define sys_renameat 302
+   301                              <1> %define sys_linkat 303
+   302                              <1> %define sys_symlinkat 304
+   303                              <1> %define sys_readlinkat 305
+   304                              <1> %define sys_fchmodat 306
+   305                              <1> %define sys_faccessat 307
+   306                              <1> %define sys_pselect6 308
+   307                              <1> %define sys_ppoll 309
+   308                              <1> %define sys_unshare 310
+   309                              <1> %define sys_set_robust_list 311
+   310                              <1> %define sys_get_robust_list 312
+   311                              <1> %define sys_splice 313
+   312                              <1> %define sys_sync_file_range 314
+   313                              <1> %define sys_tee 315
+   314                              <1> %define sys_vmsplice 316
+   315                              <1> %define sys_move_pages 317
+   316                              <1> %define sys_getcpu 318
+   317                              <1> %define sys_epoll_pwait 319
+   318                              <1> %define sys_utimensat 320
+   319                              <1> %define sys_signalfd 321
+   320                              <1> %define sys_timerfd_create 322
+   321                              <1> %define sys_eventfd 323
+   322                              <1> %define sys_fallocate 324
+   323                              <1> %define sys_timerfd_settime 325
+   324                              <1> %define sys_timerfd_gettime 326
+   325                              <1> %define sys_signalfd4 327
+   326                              <1> %define sys_eventfd2 328
+   327                              <1> %define sys_epoll_create1 329
+   328                              <1> %define sys_dup3 330
+   329                              <1> %define sys_pipe2 331
+   330                              <1> %define sys_inotify_init1 332
+   331                              <1> %define sys_preadv 333
+   332                              <1> %define sys_pwritev 334
+   333                              <1> %define sys_rt_tgsigqueueinfo 335
+   334                              <1> %define sys_perf_event_open 336
+   335                              <1> %define sys_recvmmsg 337
+   336                              <1> %define sys_fanotify_init 338
+   337                              <1> %define sys_fanotify_mark 339
+   338                              <1> %define sys_prlimit64 340
+   339                              <1> %define sys_name_to_handle_at 341
+   340                              <1> %define sys_open_by_handle_at 342
+   341                              <1> %define sys_clock_adjtime 343
+   342                              <1> %define sys_syncfs 344
+   343                              <1> %define sys_sendmmsg 345
+   344                              <1> %define sys_setns 346
+   345                              <1> %define sys_process_vm_readv 347
+   346                              <1> %define sys_process_vm_writev 348
+   347                              <1> %define sys_kcmp 349
+   348                              <1> %define sys_finit_module 350
+   349                              <1> %define sys_sched_setattr 351
+   350                              <1> %define sys_sched_getattr 352
+   351                              <1> %define sys_renameat2 353
+   352                              <1> %define sys_seccomp 354
+   353                                      section .bss
+   354                                      section .data
+   355 00000000 010000000200000003-             array dd 1,2,3,4,5
+   356 00000009 000000040000000500-
+   357 00000012 0000               
+   358                                          arraylen equ ($ - array) / 4            ; array length * 4 = number of elements
+   359                                      section .text
+   360                                          global _start:
+   361                                      _start:
+   362 00000000 BE[00000000]                    mov     esi, array                      ; get pointer to array
+   363 00000005 BF04000000                      mov     edi, arraylen - 1               ; edi = number of array elements
+   364                                      .PrintArray:
+   365 0000000A BA01000000                      mov     edx, 1                          ; print 1 byte                 
+   366 0000000F 678B0E                          mov     ecx, [esi]                      ; get current array element
+   367 00000012 83C130                          add     ecx, 48                         ; add 48 to convet to ASCII
+   368                                          push    ecx                             ; push to stack since we need an address of item to print
+   369          ******************       error: instruction not supported in 64-bit mode
+   370 00000015 89E1                            mov     ecx, esp                        ; mov address of char to ecx
+   371                                          mov     ebx, stdout
+   372          ******************       error: symbol `stdout' undefined
+   373 00000017 B804000000                      mov     eax, sys_write
+   374 0000001C CD80                            int     80h                             ; now print it
+   375                                          pop     ecx                             ; balance stack
+   376          ******************       error: instruction not supported in 64-bit mode
+   377 0000001E 83C604                          add     esi, 4                          ; get next element, 4 because it's an array of dwords
+   378 00000021 FFCF                            dec     edi                             ; decrease loop counter
+   379 00000023 79E5                            jns     .PrintArray                     ; if edi ! -1 continue loop
+   380                                      .PrintLineFeed:
+   381 00000025 83EC04                          sub     esp, 4
+   382 00000028 67C604240A                      mov     byte [esp], 10
+   383 0000002D BA01000000                      mov     edx, 1
+   384 00000032 89E1                            mov     ecx, esp
+   385                                          mov     ebx, stdout
+   386          ******************       error: symbol `stdout' undefined
+   387 00000034 B804000000                      mov     eax, sys_write
+   388 00000039 CD80                            int     80h
+   389 0000003B 83C404                          add     esp, 4                          ; not needed since next call is exit, but learn good techniques.
+   390                                      exit: 
+   391 0000003E BB00000000                      mov     ebx, 0
+   392 00000043 B801000000                      mov     eax, sys_exit
+   393 00000048 CD80                            int 80H
